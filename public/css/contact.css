@@ -1,0 +1,332 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(to right, #dcfaff, #f1caff, #cae0ff);
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  display: flex;
+  background-color: rgb(219, 99, 255);
+}
+
+.menu-toggle {
+  opacity: 0;
+}
+
+ul {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+ul li {
+  width: 250px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+ul li img {
+  margin: auto;
+  width: 45px;
+  height: 30px;
+}
+
+ul li a {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  margin: auto;
+  color: white;
+  font-size: 17px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: 0.5s all;
+}
+
+li a:hover {
+  cursor: pointer;
+  background-color: rgb(224, 160, 244);
+  color: black;
+}
+
+li.liContact {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+a.aContact {
+  width: 120px;
+  height: 35px;
+  line-height: 35px;
+  margin: auto;
+  margin-right: 30px;
+  background-color: rgb(209, 138, 254);
+  border: 1px solid rgb(177, 4, 245);
+  border-radius: 20px;
+  transition: 0.5s;
+}
+
+a.aContact:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 2px 2px rgba(160, 65, 249, 0.7),
+    -2px -2px 2px 2px rgba(160, 65, 249, 0.7),
+    4px 4px 4px 4px rgba(189, 133, 242, 0.7),
+    -4px -4px 4px 4px rgba(189, 133, 242, 0.7),
+    6px 6px 6px 6px rgba(215, 172, 254, 0.7),
+    -6px -6px 6px 6px rgba(215, 172, 254, 0.7);
+  color: black;
+}
+
+.navbar a.active {
+  color: black;
+}
+/* End navbar */
+
+/* Form contact */
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.form-container {
+  margin: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 5;
+  background-image: linear-gradient(to right, #dcfaff, #f1caff, #cae0ff);
+  padding-top: 120px;
+}
+
+.form-container form {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container label {
+  letter-spacing: 0.3px;
+  margin-bottom: 5px;
+  margin-top: 15px;
+}
+
+input,
+select {
+  width: 100%;
+  height: 30px;
+  display: block;
+  padding: 0px 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 2px solid white;
+  background-image: linear-gradient(to right, #dcfaff, #f1caff, #cae0ff);
+  transition: 0.5s all;
+}
+
+.violet-border {
+  box-shadow: 2px 2px 2px 2px rgba(160, 65, 249, 0.7),
+    -2px -2px 2px 2px rgba(160, 65, 249, 0.7),
+    4px 4px 4px 4px rgba(189, 133, 242, 0.7),
+    -4px -4px 4px 4px rgba(189, 133, 242, 0.7),
+    6px 6px 6px 6px rgba(215, 172, 254, 0.7),
+    -6px -6px 6px 6px rgba(215, 172, 254, 0.7);
+}
+
+textarea {
+  width: 100%;
+  height: 120px;
+  display: block;
+  margin-top: 3px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  padding: 10px 10px;
+  border: 2px solid white;
+  background-image: linear-gradient(to right, #dcfaff, #f1caff, #cae0ff);
+  transition: 0.5s all;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  background-color: white;
+}
+
+.btn-submit {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+button {
+  padding: 5px;
+  min-width: 10vw;
+  border-radius: 15px;
+  background-color: rgb(209, 138, 254);
+  border: 1px solid rgb(177, 4, 245);
+  color: rgb(44, 44, 44);
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  transition: 0.5s all;
+}
+
+button:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px 2px 2px rgba(160, 65, 249, 0.7),
+    -2px -2px 2px 2px rgba(160, 65, 249, 0.7),
+    4px 4px 4px 4px rgba(189, 133, 242, 0.7),
+    -4px -4px 4px 4px rgba(189, 133, 242, 0.7),
+    6px 6px 6px 6px rgba(215, 172, 254, 0.7),
+    -6px -6px 6px 6px rgba(215, 172, 254, 0.7);
+}
+
+.black-border {
+  border: 1px solid black;
+}
+/* End form contact */
+
+@media screen and (max-width: 768px) {
+  /* Navbar */
+  .navbar ul {
+    width: 50%;
+    margin-left: -25px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    background-color: rgb(219, 99, 255);
+    z-index: -999;
+    padding-top: 50px;
+    transform: translateX(-100%);
+    transition: 0.5s all;
+  }
+
+  .navbar ul li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 25px 0px;
+    z-index: -999;
+  }
+
+  .navbar ul li:hover {
+    cursor: pointer;
+    background-color: rgb(224, 160, 244);
+  }
+
+  .navbar ul li.logo {
+    display: none;
+  }
+
+  .navbar ul li.liContact {
+    display: flex;
+    height: 70px;
+    padding: 0px;
+  }
+
+  .navbar a.aContact {
+    width: 100%;
+    height: 70px;
+    line-height: 70px;
+    padding: 0px;
+    background-color: rgb(219, 99, 255);
+    border: none;
+    border-radius: 0px;
+    margin: auto;
+  }
+
+  .navbar a.aContact:hover {
+    box-shadow: none;
+    background-color: rgb(224, 160, 244);
+    transition: none;
+  }
+  /* Hamburger menu */
+  .menu-toggle {
+    position: relative;
+    left: 10%;
+    top: 10px;
+    width: 25px;
+    height: 25px;
+    opacity: 1;
+  }
+
+  .menu-toggle input {
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+    height: 4px;
+    width: 25px;
+    margin-bottom: 7px;
+    border-radius: 10px;
+    background-color: white;
+    transition: all 0.5s;
+  }
+  /* Animasi menu toggle */
+  .menu-toggle span:nth-child(2) {
+    transform-origin: 0% 0%;
+  }
+
+  .menu-toggle span:nth-child(3) {
+    opacity: 1;
+  }
+
+  .menu-toggle span:nth-child(4) {
+    transform-origin: 0% 100%;
+  }
+
+  /* apabila input di checklist */
+  .menu-toggle input:checked ~ span:nth-child(2) {
+    transform: rotate(45deg) translate(-1px, -1px) scaleX(1.35);
+  }
+
+  .menu-toggle input:checked ~ span:nth-child(3) {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  .menu-toggle input:checked ~ span:nth-child(4) {
+    transform: rotate(-45deg) translate(0px, 0px) scaleX(1.35);
+  }
+
+  /*toggle slide  */
+  .navbar ul.slide {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .navbar ul li.liContact.slide {
+    transform: translate(0);
+    opacity: 1;
+  }
+  /* End Hamburger menu */
+  /* End navbar */
+  
+  /* Form contact */
+  .btn-submit button {
+    width: 100vw;
+  }
+  /* End Form contact */
+}

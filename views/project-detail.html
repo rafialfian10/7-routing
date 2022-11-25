@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="icon" href="/public/assets/img/logo.png">
+    <link rel="stylesheet" href="/public/css/blog.css">
+</head>
+<body>
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div class="menu-toggle">
+            <input type="checkbox">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <li class="logo"><img src="/public/assets/img/logo.png"></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/project">My Project</a></li>
+            <li><a href="">About</a></li>
+            <li class="liContact"><a href="/contact" class="aContact">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <div class="blog-container">
+        <h2>{{.Data.ProjectName}}</h2>
+        <div class="content-satu">
+            <img src="/public/assets/img/web.png" class="img-content">
+            <div class="content-dua">
+                <div class="duration">
+                    <h3>Duration</h3>
+                    <img src="/public/assets/img/calender.png" class="calender">
+                    <label for="" class="label1">{{.Data.RenderTime .Data.StartDate}} - {{.Data.RenderTime .Data.EndDate}}</label>
+                    <img src="/public/assets/img/clock.png" class="clock">
+                    <label for="" class="label2">{{.Data.DurationTime .Data.StartDate .Data.EndDate}}</label>
+                </div>
+                <div class="tech">
+                    <h3>Technologies</h3>
+                    <img src="/public/assets/img/react.png" class="react">
+                    <label for="" class="label3">React Js</label>
+                    <img src="/public/assets/img/javascript.png" class="javascript">
+                    <label for="" class="label4">JavaScript</label>
+                    <img src="/public/assets/img/node.png" class="node">
+                    <label for="" class="label5">Node Js</label>
+                    <img src="/public/assets/img/socket.png" class="socket">
+                    <label for="" class="label6">Socket IO</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="desc">
+            <p>{{.Data.Desc}}</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita vitae dicta repellendus voluptate recusandae qui itaque, neque officiis beatae odit voluptatibus sit nisi, doloremque est tempore nihil rerum cum voluptatem alias obcaecati similique quod velit sunt! Accusantium neque itaque ratione sapiente iure accusamus nobis voluptatum quidem qui, dignissimos asperiores ducimus quas id veritatis exercitationem nisi! Nostrum nemo vel quos. Amet doloremque laboriosam reiciendis ex, ullam sed delectus, distinctio iusto voluptatum ratione, eaque consectetur. Repellat nesciunt sed obcaecati sapiente unde eius quo distinctio id, eveniet odit velit voluptas soluta pariatur earum hic non! Doloribus quod delectus ab totam ut eaque magnam!</p>
+        </div>
+    </div>
+
+    <script src="/public/js/blog.js"></script>
+</body>
+</html>
