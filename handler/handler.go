@@ -103,8 +103,10 @@ func HandleAddProject(w http.ResponseWriter, r *http.Request) {
 	endDate := r.PostForm.Get("endDate")
 	desc := r.PostForm.Get("desc")
 
+	//  Buat variabel untuk menampung data checkbox
 	var checkboxs []string
 
+	// Jika didalam form checkboxs ada value-nya, maka append ke array checkboxs
 	if r.FormValue("node") != "" {
 		checkboxs = append(checkboxs, r.FormValue("node"))
 	}
