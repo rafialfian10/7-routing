@@ -71,7 +71,6 @@ func (p Project) DurationTime(startDate string, endDate string) string {
 
 	if year != 0 && month != 0 {
 		return strconv.Itoa(year) + " year," + strconv.Itoa(month) + " month," + strconv.Itoa(day) + " day"
-
 	} else if month != 0 {
 		return strconv.Itoa(month) + " month," + strconv.Itoa(day) + " day"
 	} else {

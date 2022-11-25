@@ -138,16 +138,8 @@ func HandleAddProject(w http.ResponseWriter, r *http.Request) {
 
 func HandleDelete(w http.ResponseWriter, r *http.Request) {
 	index, _ := strconv.Atoi(mux.Vars(r)["index"])
-	fmt.Println(index)
 
 	model.DataProjects = append(model.DataProjects[:index], model.DataProjects[index+1:]...)
 
 	http.Redirect(w, r, "/", http.StatusAccepted)
-
 }
-
-// func AddProject(newDataProject DataProject) {
-// 	ProjectList = append(ProjectList, newDataProject)
-
-// 	fmt.Println("Data Berhasil ditambahkan")
-// }
