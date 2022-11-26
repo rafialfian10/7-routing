@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>my-profile-pages</title>
+    <link rel="icon" href="/public/assets/img/logo.png">
+    <link rel="stylesheet" href="/public/css/project.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="menu-toggle">
+            <input type="checkbox">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul>
+            <li class="logo"><img src="/public/assets/img/logo.png"></li>
+            <li><a href="/" class="">Home</a></li>
+            <li><a href="/project" class="active">My Project</a></li>
+            <li><a href="" class="">About</a></li>
+            <li class="liContact"><a href="/contact" class="aContact">Contact Me</a></li>
+        </ul>
+    </nav>
+
+    <!-- add my project -->
+    <section>
+        <div class="form-container" >
+            <h2>UPDATE MY PROJECT</h2>
+            <form action="/edit-project" method="POST" id="form-project">
+                <label for="project-name">Project Name</label>
+                <input type="text" name="projectName" id="projectName" class="border-color" value="{{.DataProject.ProjectName}}">
+    
+                <div class="date">
+                    <label for="start-date" class="label-1">Start Date</label>
+                    <input type="date" name="startDate" id="startDate" class="start-date border-color" value="{{.DataProject.StartDate}}">
+                    <label for="end-date" class="label-2">End Date</label>
+                    <input type="date" name="endDate" id="endDate" class="end-date border-color" value="{{.DataProject.EndDate}}">
+                </div>
+    
+                <label for="desc">Description</label>
+                <textarea name="desc" id="desc" class="border-color">{{.DataProject.Desc}}</textarea>
+                
+                <label for="tech">Technologies</label> 
+                <div class="checkbox-1">
+                    <input type="checkbox" name="node" value="node" id="node" class="mycheckbox">
+                    <label for="node">Node JS</label>
+                    <input type="checkbox" name="angular" value="angular" id="angular" class="mycheckbox">
+                    <label for="angular">Angular JS</label>
+                </div>
+                <div class="checkbox-2">
+                    <input type="checkbox" name="react" value="react" id="react" class="mycheckbox">
+                    <label for="react">React JS</label>
+                    <input type="checkbox" name="typescript" value="typescript" id="typescript" class="mycheckbox">
+                    <label for="typescript">TypeScript</label>
+                </div>
+                
+                <label>Upload Image</label>
+                <div class="img-upload">
+                    <label for="image" class="border-color">
+                        <p>choose</p>
+                        <img src="/public/assets/img/attachment.png"/>
+                    </label>
+                    <input type="file" name="image" id="image">
+                </div>
+    
+                <button type="submit" class="btn-submit">Submit</button>
+            </form>
+        </div>
+    </section> 
+    <script src="/public/js/project.js"></script>
+</body>
+</html>

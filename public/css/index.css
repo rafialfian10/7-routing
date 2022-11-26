@@ -17,6 +17,7 @@ body {
   margin: -80px auto;
   display: flex;
   background-color: rgb(219, 99, 255);
+  z-index: 99999;
 }
 
 .menu-toggle {
@@ -109,14 +110,14 @@ a.aContact:hover {
   transition: 0.5s all;
 }
 
-.content-container:hover {
+/* .content-container:hover {
   box-shadow: 2px 2px 2px 2px rgba(160, 65, 249, 0.7),
     -2px -2px 2px 2px rgba(160, 65, 249, 0.7),
     4px 4px 4px 4px rgba(189, 133, 242, 0.7),
     -4px -4px 4px 4px rgba(189, 133, 242, 0.7),
     6px 6px 6px 6px rgba(215, 172, 254, 0.7),
     -6px -6px 6px 6px rgba(215, 172, 254, 0.7);
-}
+} */
 
 .content {
   width: 65%;
@@ -208,14 +209,14 @@ p {
   transition: 0.5s all;
 }
 
-.card:hover {
+/* .card:hover {
   box-shadow: 2px 2px 2px 2px rgba(160, 65, 249, 0.7),
     -2px -2px 2px 2px rgba(160, 65, 249, 0.7),
     4px 4px 4px 4px rgba(189, 133, 242, 0.7),
     -4px -4px 4px 4px rgba(189, 133, 242, 0.7),
     6px 6px 6px 6px rgba(215, 172, 254, 0.7),
     -6px -6px 6px 6px rgba(215, 172, 254, 0.7);
-}
+} */
 
 .card img {
   width: 100%;
@@ -242,9 +243,9 @@ p {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
-  gap: 20px 0px;
+  gap: 35px 35px;
   background-image: linear-gradient(to right, #dcfaff, #f1caff, #cae0ff);
   padding: 50px;
   padding-top: 30px;
@@ -271,12 +272,12 @@ p {
 .cards:hover {
   border-radius: 5px;
   background-color: white;
-  box-shadow: 2px 2px 2px 2px rgba(160, 65, 249, 0.7),
+  /* box-shadow: 2px 2px 2px 2px rgba(160, 65, 249, 0.7),
     -2px -2px 2px 2px rgba(160, 65, 249, 0.7),
     4px 4px 4px 4px rgba(189, 133, 242, 0.7),
     -4px -4px 4px 4px rgba(189, 133, 242, 0.7),
     6px 6px 6px 6px rgba(215, 172, 254, 0.7),
-    -6px -6px 6px 6px rgba(215, 172, 254, 0.7);
+    -6px -6px 6px 6px rgba(215, 172, 254, 0.7); */
   transform: scale(1.03);
 }
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
     <link rel="icon" href="public/assets/img/logo.png">
-    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/index.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -63,9 +63,9 @@
              <!-- Looping DataProjects dari function HandleHome  -->
              {{range $i, $data := .DataProjects}}
             <div class="cards">
-                <img src="public/assets/img/saitama.png" class="card-image">
+                <img src="public/assets/img/{{$data.Image}}" class="card-image">
                 <h3><a href="/project-detail/{{$i}}" target="_blank">{{$data.ProjectName}}</a></h3>
-                <p class="date">  {{$data.DurationTime $data.StartDate $data.EndDate}}</p>
+                <p class="date">  {{.DurationTime $data.StartDate $data.EndDate}}</p>
                 <p class="desc">{{$data.Desc}}</p>
                 <div class="icons">
                     {{range $index, $icon := $data.Tech}}
@@ -73,7 +73,7 @@
                     {{end}}
                 </div>
                 <div>
-                    <a href="" onclick="return confirm('Are you sure?')" class="btn-edit">edit</a>
+                    <a href="/edit-project/{{$i}}" onclick="return confirm('Are you sure?')" class="btn-edit">edit</a>
                     <a href="/delete/{{$i}}" onclick="return confirm('Are you sure?')" class="btn-delete" >delete</a>
                 </div>
             </div>
