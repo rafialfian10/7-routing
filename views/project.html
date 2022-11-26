@@ -32,17 +32,17 @@
             <h2>ADD MY PROJECT</h2>
             <form action="/add-project" method="POST" id="form-project">
                 <label for="project-name">Project Name</label>
-                <input type="text" name="projectName" id="projectName" class="border-color">
+                <input type="text" name="projectName" id="projectName" class="border-color" required>
     
                 <div class="date">
                     <label for="start-date" class="label-1">Start Date</label>
-                    <input type="date" name="startDate" id="startDate" class="start-date border-color" >
+                    <input type="date" name="startDate" id="startDate" class="start-date border-color" required>
                     <label for="end-date" class="label-2">End Date</label>
-                    <input type="date" name="endDate" id="endDate" class="end-date border-color">
+                    <input type="date" name="endDate" id="endDate" class="end-date border-color" required>
                 </div>
     
                 <label for="desc">Description</label>
-                <textarea name="desc" id="desc" class="border-color"></textarea>
+                <textarea name="desc" id="desc" class="border-color" required></textarea>
     
                 <label for="tech">Technologies</label> 
                 <div class="checkbox-1">

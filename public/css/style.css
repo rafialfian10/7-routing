@@ -298,6 +298,10 @@ p {
   color: black;
 }
 
+.card-container .cards h3 a:hover {
+  box-shadow: none;
+}
+
 .cards .date {
   margin-top: 5px;
   margin-bottom: 15px;
@@ -335,7 +339,7 @@ p {
   justify-content: space-between;
 } 
 
-.cards a.btn-delete, .cards a.btn-edit {
+.cards .btn-delete, .cards .btn-edit {
   width: 48%;
   padding: 5px;
   text-decoration: none;
@@ -348,6 +352,7 @@ p {
   border: 1px solid rgb(177, 4, 245);
   background-color: rgb(209, 138, 254);
   transition: 0.5s all;
+  z-index: 10000;
 }
 
 .cards a:hover {
@@ -513,17 +518,22 @@ p {
 
   /* Card */
   .card-container {
-    width: 100%;
+    width: 90%;
     flex-direction: column;
     padding: 0px;
+    margin: auto;
   }
 
   .cards {
-    width: 100%;
+    width: 90%;
   }
 
   .cards:hover {
     transform: none;
+  }
+
+  .cards img.card-image:hover {
+    filter: none;
   }
   /* End card */
 }

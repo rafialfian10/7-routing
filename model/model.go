@@ -8,7 +8,6 @@ import (
 
 // Create struct, struct berfungsi untuk membuat struktur dari tipe data
 type Project struct {
-	Id          string
 	ProjectName string
 	StartDate   string
 	EndDate     string
@@ -17,12 +16,12 @@ type Project struct {
 	Image       string
 }
 
-// Buat slice
+// Buat array of object sebagai local storage
 var DataProjects = []Project{
 	{
 		ProjectName: "Dumbways 2022",
-		StartDate:   "24-11-2022",
-		EndDate:     "24-12-2022",
+		StartDate:   "2022-11-24",
+		EndDate:     "2022-12-24",
 		Desc:        "Halo Dumbways",
 		Tech:        []string{"node", "angular", "react", "typescript"},
 		Image:       "public/assets/img/saitama.png",
@@ -70,9 +69,9 @@ func (p Project) DurationTime(startDate string, endDate string) string {
 	}
 
 	if year != 0 && month != 0 {
-		return strconv.Itoa(year) + " year," + strconv.Itoa(month) + " month," + strconv.Itoa(day) + " day"
+		return strconv.Itoa(year) + " year, " + strconv.Itoa(month) + " month, " + strconv.Itoa(day) + " day"
 	} else if month != 0 {
-		return strconv.Itoa(month) + " month," + strconv.Itoa(day) + " day"
+		return strconv.Itoa(month) + " month, " + strconv.Itoa(day) + " day"
 	} else {
 		return strconv.Itoa(day) + " Day"
 	}

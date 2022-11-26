@@ -63,7 +63,7 @@
              <!-- Looping DataProjects dari function HandleHome  -->
              {{range $i, $data := .DataProjects}}
             <div class="cards">
-                <img src="public/assets/img/saitama.png">
+                <img src="public/assets/img/saitama.png" class="card-image">
                 <h3><a href="/project-detail/{{$i}}" target="_blank">{{$data.ProjectName}}</a></h3>
                 <p class="date">  {{$data.DurationTime $data.StartDate $data.EndDate}}</p>
                 <p class="desc">{{$data.Desc}}</p>
@@ -74,7 +74,7 @@
                 </div>
                 <div>
                     <a href="" onclick="return confirm('Are you sure?')" class="btn-edit">edit</a>
-                    <a href="/delete-project/{{$i}}" onclick="return confirm('Are you sure?')" class="btn-delete" >delete</a>
+                    <a href="/delete/{{$i}}" onclick="return confirm('Are you sure?')" class="btn-delete" >delete</a>
                 </div>
             </div>
             {{end}}
@@ -82,4 +82,4 @@
     </section>
     <script src="public/js/index.js"></script>
 </body>
-</html>
+</html> 

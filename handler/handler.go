@@ -11,27 +11,61 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func HandleHome(w http.ResponseWriter, r *http.Request) { //ResponseWriter: untuk menampilkan data, Request: untuk menambahkan data
-	w.Header().Set("Content-type", "text/html; charset-utf-8") // Header berfungsi untuk menampilkan data. Data yang ditamplikan "text-html" /"json" / dll
+// Create struct, struct berfungsi untuk membuat struktur dari tipe data
+type Project struct {
+	ProjectName string
+	StartDate   string
+	EndDate     string
+	Desc        string
+	Tech        []string
+	Image       string
+}
 
-	tmpl, err := template.ParseFiles("views/index.html") // template.ParseFiles berfungsi memparsing file yang disisipkan sebagai parameter
+// Buat array of object sebagai local storage
+var DataProjects = []Project{
+	{
+		ProjectName: "Dumbways 2022",
+		StartDate:   "2022-11-24",
+		EndDate:     "2022-12-24",
+		Desc:        "Halo Dumbways",
+		Tech:        []string{"node", "angular", "react", "typescript"},
+		Image:       "public/assets/img/saitama.png",
+	},
+}
+
+func HandleHome(w http.ResponseWriter, r *http.Request) { //ResponseWriter: untuk menampilkan data, Request: untuk menambahkan data
+	w.Header().Set("Content-type", "text/html; charset=utf-8") // Header berfungsi untuk menampilkan data. Data yang ditamplikan "text-html" /"json" / dll
+
+	tmpt, err := template.ParseFiles("views/index.html") // template.ParseFiles berfungsi memparsing file yang disisipkan sebagai parameter
 
 	if err != nil {
 		w.Write([]byte("Message : " + err.Error()))
 		return
 	}
 
-	fmt.Println((model.DataProjects))
+	// Buat map, kemudian panggil local storage dengan id tertentu dan simpan local storage sebagai value dari "DataProjects"
+	DataProjects := model.DataProjects
 	dataProject := map[string]interface{}{
-		"DataProjects": model.DataProjects,
+		"DataProjects": DataProjects,
 	}
+	// Kemudian tampilkan seluruh isi dari dari local storage
+	tmpt.Execute(w, dataProject) // Execute berfungsi untuk mengeksekusi / menampilkan data dan harus ada 2 parameter (respon, Data)
+}
 
-	tmpl.Execute(w, dataProject) // Execute berfungsi untuk mengeksekusi / menampilkan data dan harus ada 2 parameter (respon, Data)
+func HandleProject(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-type", "text/html; charset=utf-8")
+	tmpt, err := template.ParseFiles("views/project.html")
 
+	if err != nil {
+		w.Write([]byte("Message : " + err.Error()))
+		return
+	} else {
+		tmpt.Execute(w, nil)
+	}
 }
 
 func HandleContact(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-type", "text/html; charset-utf-8")
+	w.Header().Set("Content-type", "text/html; charset=utf-8")
 
 	result, err := template.ParseFiles("views/contact.html")
 
@@ -43,55 +77,8 @@ func HandleContact(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func HandleProject(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-type", "text/html; charset-utf-8")
-	tmpt, err := template.ParseFiles("views/project.html")
-
-	if err != nil {
-		w.Write([]byte("Message : " + err.Error()))
-		return
-	} else {
-		tmpt.Execute(w, nil)
-	}
-}
-
-func HandleDetailProject(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-type", "text/html; charset-utf-8")
-	tmpt, err := template.ParseFiles("views/project-detail.html")
-
-	if err != nil {
-		w.Write([]byte("Message : " + err.Error()))
-		return
-	}
-
-	// Tangkap id dari blog
-	id, _ := strconv.Atoi(mux.Vars(r)["id"]) // strconv.Atoi untuk konversi string ke int.  mux.Vars() berfungsi untuk menangkap id dan mengembalikan 2 nilai parameter result dan error
-
-	// Buat variable untuk menampung data struct
-	var dataProjectDetail = model.Project{}
-
-	for i, data := range model.DataProjects {
-		if i == id {
-			dataProjectDetail = model.Project{
-				ProjectName: data.ProjectName,
-				StartDate:   data.StartDate,
-				EndDate:     data.EndDate,
-				Desc:        data.Desc,
-			}
-		}
-	}
-
-	// Buat slice untuk menampung variabel dataProjectDetail
-	dataProject := map[string]interface{}{
-		"Data": dataProjectDetail,
-	}
-
-	tmpt.Execute(w, dataProject)
-}
-
 func HandleAddProject(w http.ResponseWriter, r *http.Request) {
 	// fmt.Println(r) // r berisi seluruh data form
-
 	err := r.ParseForm()
 	if err != nil {
 		log.Fatal(err)
@@ -120,7 +107,7 @@ func HandleAddProject(w http.ResponseWriter, r *http.Request) {
 		checkboxs = append(checkboxs, r.FormValue("typescript"))
 	}
 
-	// Buat object dengan menginisialisasi key berdasarkan struct
+	// Panggil struct kemudian tampung kedalam variabel dan masukkan data yang sudah ditangkap dengan PostForm.Get()
 	newData := model.Project{
 		ProjectName: projectName,
 		StartDate:   startDate,
@@ -129,17 +116,40 @@ func HandleAddProject(w http.ResponseWriter, r *http.Request) {
 		Tech:        checkboxs,
 	}
 
-	// Buat penampung datas kemudian append / masukkan object newData ke dalam slice DataProject
+	// Kemudian panggil local storage dan append object newData
 	model.DataProjects = append(model.DataProjects, newData)
 
 	// Panggil method redirect agar Setelah data dikirim, maka routing akan berpindah ke halaman index
 	http.Redirect(w, r, "/", http.StatusMovedPermanently)
+	fmt.Println("Data telah berhasil ditambahkan")
 }
 
-func HandleDelete(w http.ResponseWriter, r *http.Request) {
-	index, _ := strconv.Atoi(mux.Vars(r)["index"])
+func HandleDetailProject(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-type", "text/html; charset=utf-8")
+	tmpt, err := template.ParseFiles("views/project-detail.html")
 
-	model.DataProjects = append(model.DataProjects[:index], model.DataProjects[index+1:]...)
+	if err != nil {
+		w.Write([]byte("Message : " + err.Error()))
+		return
+	}
 
-	http.Redirect(w, r, "/", http.StatusAccepted)
+	// Tangkap id dari blog
+	id, _ := strconv.Atoi(mux.Vars(r)["id"]) // strconv.Atoi untuk konversi string ke int.  mux.Vars() berfungsi untuk menangkap id dan mengembalikan 2 nilai parameter result dan error
+
+	// Buat map, kemudian panggil local storage dengan id tertentu dan simpan local storage sebagai value dari "DataProjects"
+	dataProject := map[string]interface{}{
+		"DataProjects": model.DataProjects[id],
+	}
+
+	tmpt.Execute(w, dataProject)
+}
+
+func HandleDeleteProject(w http.ResponseWriter, r *http.Request) {
+
+	id, _ := strconv.Atoi(mux.Vars(r)["id"])
+
+	model.DataProjects = append(model.DataProjects[:id], model.DataProjects[id+1:]...)
+
+	http.Redirect(w, r, "/", http.StatusFound)
+	fmt.Println("Data dengan ID ke", id, " berhasil dihapus")
 }

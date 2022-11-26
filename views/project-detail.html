@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
     <link rel="icon" href="/public/assets/img/logo.png">
-    <link rel="stylesheet" href="/public/css/blog.css">
+    <link rel="stylesheet" href="/public/css/project-detaill.css">
 </head>
 <body>
       <!-- Navbar -->
@@ -27,33 +27,50 @@
     </nav>
 
     <div class="blog-container">
-        <h2>{{.Data.ProjectName}}</h2>
+        <h2>{{.DataProjects.ProjectName}}</h2>
         <div class="content-satu">
             <img src="/public/assets/img/web.png" class="img-content">
             <div class="content-dua">
                 <div class="duration">
                     <h3>Duration</h3>
                     <img src="/public/assets/img/calender.png" class="calender">
-                    <label for="" class="label1">{{.Data.RenderTime .Data.StartDate}} - {{.Data.RenderTime .Data.EndDate}}</label>
+                    <label for="" class="label1">{{.DataProjects.RenderTime .DataProjects.StartDate}} - {{.DataProjects.RenderTime .DataProjects.EndDate}}</label>
                     <img src="/public/assets/img/clock.png" class="clock">
-                    <label for="" class="label2">{{.Data.DurationTime .Data.StartDate .Data.EndDate}}</label>
+                    <label for="" class="label2">{{.DataProjects.DurationTime .DataProjects.StartDate .DataProjects.EndDate}}</label>
                 </div>
                 <div class="tech">
                     <h3>Technologies</h3>
-                    <img src="/public/assets/img/react.png" class="react">
-                    <label for="" class="label3">React Js</label>
-                    <img src="/public/assets/img/javascript.png" class="javascript">
-                    <label for="" class="label4">JavaScript</label>
-                    <img src="/public/assets/img/node.png" class="node">
-                    <label for="" class="label5">Node Js</label>
-                    <img src="/public/assets/img/socket.png" class="socket">
-                    <label for="" class="label6">Socket IO</label>
+                    <div class="icons">
+                        {{range $i, $icon := .DataProjects.Tech}}
+                        {{if eq $icon "node"}}
+                        <div class="icon1">
+                            <img src="/public/assets/img/{{$icon}}.png" class="node">
+                            <label class="label3">Node Js</label>
+                        </div>
+                        {{else if eq $icon "angular"}}
+                        <div class="icon2">
+                            <img src="/public/assets/img/{{$icon}}.png" class="angular">
+                            <label class="label4">Angular Js</label>
+                        </div>
+                        {{else if eq $icon "react"}}
+                        <div class="icon3">
+                            <img src="/public/assets/img/{{$icon}}.png" class="react">
+                            <label class="label5">React Js</label>
+                        </div>
+                        {{else if eq $icon "typescript"}}
+                        <div class="icon4">
+                            <img src="/public/assets/img/{{$icon}}.png" class="typescript">
+                            <label class="label6">TypeScript</label>
+                        </div>
+                        {{end}}
+                        {{end}}
+                    </div>
                 </div>
             </div>
         </div>
         
         <div class="desc">
-            <p>{{.Data.Desc}}</p>
+            <p>{{.DataProjects.Desc}}</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita vitae dicta repellendus voluptate recusandae qui itaque, neque officiis beatae odit voluptatibus sit nisi, doloremque est tempore nihil rerum cum voluptatem alias obcaecati similique quod velit sunt! Accusantium neque itaque ratione sapiente iure accusamus nobis voluptatum quidem qui, dignissimos asperiores ducimus quas id veritatis exercitationem nisi! Nostrum nemo vel quos. Amet doloremque laboriosam reiciendis ex, ullam sed delectus, distinctio iusto voluptatum ratione, eaque consectetur. Repellat nesciunt sed obcaecati sapiente unde eius quo distinctio id, eveniet odit velit voluptas soluta pariatur earum hic non! Doloribus quod delectus ab totam ut eaque magnam!</p>
         </div>
     </div>
