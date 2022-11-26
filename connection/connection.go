@@ -8,7 +8,7 @@ import (
 	"github.com/jackc/pgx/v4" // Install pgx postgresql (go get -u github.com/jackc/pgx/v5)
 )
 
-// buat pointer agar dapat diakses secara global
+// buat pointer ke pgx agar dapat diakses secara global
 var Conn *pgx.Conn
 
 // Koneksi database
