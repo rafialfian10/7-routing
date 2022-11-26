@@ -107,7 +107,7 @@ func HandleAddProject(w http.ResponseWriter, r *http.Request) {
 		checkboxs = append(checkboxs, r.FormValue("typescript"))
 	}
 
-	// Panggil struct kemudian tampung kedalam variabel dan masukkan data yang sudah ditangkap dengan PostForm.Get()
+	// Panggil struct kemudian tampung kedalam variabel dan masukkan data yang sudah ditangkap dengan PostForm.Get() ke dalam object
 	newData := model.Project{
 		ProjectName: projectName,
 		StartDate:   startDate,
@@ -137,8 +137,9 @@ func HandleDetailProject(w http.ResponseWriter, r *http.Request) {
 	id, _ := strconv.Atoi(mux.Vars(r)["id"]) // strconv.Atoi untuk konversi string ke int.  mux.Vars() berfungsi untuk menangkap id dan mengembalikan 2 nilai parameter result dan error
 
 	// Buat map, kemudian panggil local storage dengan id tertentu dan simpan local storage sebagai value dari "DataProjects"
+	DataProjects := model.DataProjects
 	dataProject := map[string]interface{}{
-		"DataProjects": model.DataProjects[id],
+		"DataProjects": DataProjects[id],
 	}
 
 	tmpt.Execute(w, dataProject)
